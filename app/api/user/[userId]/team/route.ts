@@ -56,6 +56,17 @@ export async function PATCH(
     );
   } catch (error) {
     console.error("Error updating user's team:", error);
+    if (
+      error instanceof Error &&
+      error.message.includes("Record to update not found.")
+    ) {
+      return NextResponse.json(
+        {
+          error: "User not found",
+        },
+        { status: 404 },
+      );
+    }
     return NextResponse.json(
       {
         error: "An error occurred while updating the user's team",
