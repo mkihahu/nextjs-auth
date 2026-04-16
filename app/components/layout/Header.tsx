@@ -1,8 +1,8 @@
 "use client";
 
-import { User } from "@/app/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { User } from "../../types";
 
 interface HeaderProps {
   user: User | null;
